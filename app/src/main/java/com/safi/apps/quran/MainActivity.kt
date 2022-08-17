@@ -1,4 +1,4 @@
-t package com.safi.apps.quran
+package com.safi.apps.quran
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
