@@ -16,14 +16,16 @@ import androidx.compose.ui.platform.InspectableModifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.safi.apps.quran.R
 import com.safi.apps.quran.data.api.SurahApiImpl
-import com.safi.apps.quran.data.parser.SurahListParser
+import com.safi.apps.quran.data.collection.SurahCollection
 import com.safi.apps.quran.data.pojo.Surah
 
 @Composable
 fun HomeScreen() {
-    val api = SurahApiImpl(SurahListParser())
+    val api = SurahApiImpl(SurahCollection(Firebase.firestore))
     val data = produceState<List<Surah>>(initialValue = emptyList()) {
         value = api.getAll()
     }
